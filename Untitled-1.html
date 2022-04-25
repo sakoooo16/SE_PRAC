@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form</title>
+
+    <script type="text/javascript">
+        function validate()
+	{
+
+		var name= document.forms["registration"]["t1"];
+		var email= document.forms["registration"]["t3"];
+		var uname= document.forms["registration"]["t4"];
+		var pwd= 	document.forms["registration"]["t5"];		
+		var cpwd= document.forms["registration"]["t6"];
+		
+        
+		var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+		var nos= /^[0-9]+$/;
+        var letters =/^[A-Za-z]+$/;
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if(name.value ==" ")
+		{
+            document.getElementById('t11').innerHTML="Please enter a valid first name"; 
+            name.focus(); 
+            return false;
+	
+		}
+		else if(!letters.test(name.value))
+		{
+			document.getElementById('t11').innerHTML='Name field required only alphabet characters';
+            name.focus(); 
+            return false;
+		}
+		else if(email.value ==" ")
+		{
+			document.getElementById('t13').innerHTML='Please enter your user email id';
+            email.focus();
+            return false;
+		}
+		else if (!filter.test(email.value))
+		{
+			document.getElementById('t13').innerHTML='Invalid email';
+            email.focus();
+            return false;
+		}
+		else if(uname.value==" ")
+		{
+			document.getElementById('t14').innerHTML='Please enter the user name.';
+            uname.focus();
+            return false;
+		}
+		else if(!nos.test(uname.value))
+		{
+			document.getElementById('t14').innerHTML='User name field required only number characters';
+		    uname.focus();
+            return false;
+        }
+		else if(pwd.value==" ")
+		{
+			document.getElementById('t15').innerHTML='Please enter Password';
+            pwd.focus();
+            return false;
+		}
+		else if(cpwd.value==" ")
+		{
+			document.getElementById('t16').innerHTML='Enter Confirm Password';
+            cpwd.focus();
+            return false;
+		}
+		else if(!pwd_expression.test(pwd.value))
+		{
+			document.getElementById('t15').innerHTML='Upper case, Lower case, Special character and Numeric letter are required in Password filed';
+            pwd.focus();
+            return false;
+        }
+		else if(pwd.value != cpwd.value)
+		{
+			document.getElementById('t16').innerHTML='Password not Matched';
+            cpwd.focus();
+            return false;
+		}
+		else if(document.getElementById("t5").value.length < 6)
+		{
+			document.getElementById('t15').innerHTML='Password minimum length is 6';
+            pwd.focus();
+            return false;
+		}
+		else if(document.getElementById("t5").value.length > 12)
+		{
+			document.getElementById('t15').innerHTML='Password max length is 12';
+            pwd.focus();
+            return false;
+		}
+		else
+		{				                            
+               alert('Thank You for Login & You are Redirecting to Campuslife Website');
+			   // Redirecting to other page or webste code. 
+			   window.location = "http://www.campuslife.co.in"; 
+               return true;
+		}
+	}
+	function reset()
+	{
+		document.getElementById("t1").value="";
+		document.getElementById("t2").value="";
+		document.getElementById("t3").value="";
+		document.getElementById("t4").value="";
+		document.getElementById("t5").value="";
+        document.getElementById("t6").value="";
+	}
+        </script>
+</head>
+<body background="ecommerce.jpg" style="background-repeat:no-repeat;background-size:cover">
+    <center>
+        <form name="registration"  onsubmit="return validate()" method="POST">
+            <h1>REGISTRATION FORM</h1>
+    
+        
+
+    <h2><b>
+    First Name:<input type="text"  id="t1" /><br>
+    <span id="t11" class="span"></span><br><br>
+    Last Name:<input type="text" id="t2" /><span id="t12"class="span"></span><br><br>
+    email: <input type="email" id="t3" /><span id="t13" class="span"></span> <br><br>
+    user id:<input type="number" id="t4"/><span id="t14" class="span"></span><br><br>
+    password:<input type="password" id="t5" /><span id="t15" class="span"></span><br><br>
+    confirm password:<input type="text" id="t6"/><span id="t16" class="span"></span><br><br><br>
+    <input type="submit" class="but" onsubmit=" validate()"value="SUBMIT" id="b1"><br><br> 
+       <input type="button" class="but" onclick="reset()" value="RESET" id="b2"></button><br>
+    </b>
+    
+</h2>
+
+        </form>
+</center>
+
+</body>
+</html>

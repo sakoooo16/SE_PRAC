@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <script type="text/javascript">
+        
+    function validate()
+    {
+         
+        var fname = document.forms["registration"]["t1"];
+        if (fname.value == "" || fname.length<2){ 
+                 document.getElementById('t11').innerHTML="Please enter a valid first name";  
+                 fname.focus(); 
+              
+                 return false;
+             }else{
+                 document.getElementById('t11').innerHTML="";  
+             }
+             var lname = document.forms["registration"]["t2"];
+        if (lname.value == ""){ 
+                 document.getElementById('t12').innerHTML="Please enter a valid last name";  
+                 lname.focus(); 
+              
+                 return false;
+             }else{
+                 document.getElementById('t12').innerHTML="";  
+             }
+             var email = document.forms["registration"]["t3"];
+        if (email.value == ""){ 
+                 document.getElementById('t13').innerHTML="Please enter a valid email Id";  
+                 email.focus(); 
+                 
+                 return false;
+             }else{
+                 document.getElementById('t13').innerHTML="";  
+             }
+             var uid = document.forms["registration"]["t4"];
+        if (uid.value == ""){ 
+                 document.getElementById('t14').innerHTML="Please enter a valid user id";  
+                 uid.focus(); 
+                
+                 return false;
+             }else{
+                 document.getElementById('t14').innerHTML="";  
+             }
+             var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+             var pw = document.forms["registration"]["t5"];
+        if (pw.value == ""){ 
+                 document.getElementById('t15').innerHTML="Please enter password";  
+                 pw.focus(); 
+                
+                 return false; 
+             }
+             else if(!pwd_expression.test(pw.value))
+		{
+			document.getElementById('t15').innerHTML="Upper case, Lower case, Special character and Numeric letter are required in Password filed";
+            pw.focus();
+            return false;
+        }
+             else{
+                 document.getElementById('t15').innerHTML="";  
+             }
+             var cpw = document.forms["registration"]["t6"];
+        if (cpw.value == ""){ 
+                 document.getElementById('t16').innerHTML="Please retype password";  
+                 cpw.focus(); 
+                 
+                 return false; 
+             }
+             else if(cpw.value != pw.value)
+             {
+                document.getElementById('t16').innerHTML=" password doesn't match";  
+                 cpw.focus(); 
+                
+                 return false;
+             }
+            else if(cpw.value == pw.value){
+                 document.getElementById('t16').innerHTML=" ";  
+           
+                 return false;
+
+             }
+             else{
+                 document.getElementById('t16').innerHTML=" ";  
+                
+
+                 return false;
+             }
+             
+    }
+   
+        
+                        
+
+function reset()
+   {  
+   document.getElementById('t1').value = "";
+   document.getElementById('t2').value = "";
+   document.getElementById('t3').value = "";
+   document.getElementById('t4').value = "";
+   document.getElementById('t5').value = "";
+   document.getElementById('t6').value = "";
+   document.getElementById('t11').innerHTML = "";
+   document.getElementById('t12').innerHTML = "";
+   document.getElementById('t13').value = "";
+   document.getElementById('t14').value = "";
+   document.getElementById('t15').value = "";
+   document.getElementById('t16').value = "";
+}
+    </script>
+    <style>
+        
+        .span{
+            color: red;
+            background-color: beige;
+
+        }
+        
+   
+
+    .but {
+    background-color: rgb(187, 121, 173); 
+    border-radius: 16px;
+    color: rgb(184, 17, 45) (255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    
+    display: inline-block;
+    font-size: 16px;
+    
+  }
+
+        </style>
+</head>
+
+<body background="ecommerce.jpg" style="background-repeat:no-repeat;background-size:cover">
+    <center>
+
+    
+        <div >
+    <form name="registration" onsubmit=" return validate()" method="POST">
+<h1>REGISTRATION FORM</h1>
+    <h2><b>
+    First Name:<input type="text"  id="t1" /><span id="t11" class="span"></span><br><br>
+    Last Name:<input type="text" id="t2" /><span id="t12"class="span"></span><br><br>
+    email: <input type="email" id="t3" /><span id="t13" class="span"></span> <br><br>
+    user id:<input type="number" id="t4"/><span id="t14" class="span"></span><br><br>
+    password:<input type="password" id="t5" /><span id="t15" class="span"></span><br><br>
+    confirm password:<input type="text" id="t6"/><span id="t16" class="span"></span><br><br><br>
+    <input type="submit" class="but" onclick="validate()" value="SUBMIT" id="b1"><br><br> 
+       <input type="button" class="but" onclick="reset()" value="RESET" id="b2"></button><br>
+    </b>
+    
+</h2>
+</form>
+        </div>
+</center>
+
+</body>
+</html>
